@@ -1,0 +1,56 @@
+/* Style for the login screen */
+.App-login {
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+/* The table style */
+.UsersList {
+  margin-left: auto; /* For centering the table. */
+  margin-right: auto; /* For centering the table. */
+  border-radius: 3%;
+  background-color: #aaa;
+  box-shadow: 0 4px 8px 0 rgba(31, 31, 31, 0.2),
+    0 6px 20px 0 rgba(31, 31, 31, 0.19);
+  width: 100%;
+}
+
+/* Style for the user details table. */
+.UsersDetails {
+  margin-left: auto; /* For centering the table. */
+  margin-right: auto; /* For centering the table. */
+  border-radius: 3%;
+  background-color: #aaa;
+  box-shadow: 0 4px 8px 0 rgba(31, 31, 31, 0.2),
+    0 6px 20px 0 rgba(31, 31, 31, 0.19);
+  width: 100%;
+}
+/* The header style from the users list. */
+.headersStyle {
+  text-align: center;
+  color: #eee;
+  /* backgroundColor: '#000'*/
+}
+
+/* The remove user icon style */
+.remove-icon {
+  color: darkred;
+}
+
+/* When the user points over the icon */
+.remove-icon:hover {
+  color: red;
+  cursor: pointer;
+}
+
+/* The edit icon style for better appearance on the button. */
+.edit-icon {
+  color: blue;
+}
+
+.edit-icon:hover {
+  color: skyblue;
+  cursor: pointer;
+}
