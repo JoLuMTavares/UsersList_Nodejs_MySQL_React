@@ -9,7 +9,7 @@ import './App.css';
 import Header from './layouts/Header';
 
 import Users from './components/Users';
-import UserDetails from './components/UserDetails';
+// import UserDetails from './components/UserDetails';
 import AddUser from './components/AddUser';
 import EditUser from './components/EditUser';
 // import testComp from './components/testComp';
@@ -36,10 +36,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
  * are being loaded.
  *
  * Describing the other components:
- *  - The "Users" component shows the name of the users store on the database.
- *  - The "UserDetails" component shows all the information about a specific user.
- *    This component is only loaded by the Users component. This component also
- *    receives the id of the specified user.
+ *  - The "Users" component shows the all the information of the users.
  *  - The "EditUser" gives the possibility of changing the current information of
  *    the user. This component also receives the id of the specified user.
  *  - The "AddUser" deals with the creation of a new user.
@@ -48,11 +45,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
  * At the beginning we see a login page. If the inserted username and password are
  * correct, then the we will see the list of names of the users. If we want to
  * more information, we can select the name of the specific user. We can also
- * delete a user by pressing the button located at the right side of each name.
+ * delete a user by pressing the button located at the right side of each user.
  *
- * If we see the complete information of a user (after the selected name), we also
- * can edit that information by pressing the button on the right side of all other
- * information. After the changes have been made, we can select save, so the
+ * We also can edit the user's information by pressing the button on the right
+ * side each user.
+ * After the changes have been made, we can select save, so the
  * updated information is sent to the server.
  *
  * If we want to add a new user, we must select the "Add" link located on the
@@ -60,7 +57,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
  * be filled. After that we can select the "Add Contact" button, so the new user
  * is sent to the server.
  *
- * If we want to logout, we just need to select the "Logout" link located on the
+ * If we want to logout, we just need to select the Logout icon located on the
  * right side of the navigation bar (last link).
  *
  *
@@ -97,26 +94,6 @@ class App extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
-  };
-
-  /* This function doesn't work. */
-  loginWithEnterKeyCode = async event => {
-    if (event.code === 13) {
-      const result = await axios('http://localhost:1024/login', {
-        method: 'post',
-        data: {
-          username: this.state.username,
-          password: this.state.password
-        },
-        withCredentials: true
-      });
-
-      if (result.data.error === 0) {
-        alert('Login successful');
-
-        localStorage.setItem('token', result.data.token);
-      }
-    }
   };
 
   /**
@@ -245,7 +222,7 @@ class App extends Component {
               <Route exact path="/" component={Users} />
               <Route exact path="/loggedin" component={SuccessLogin} />
               <Route exact path="/loggedout" component={SuccessLogout} />
-              <Route exact path="/userdetails/:id" component={UserDetails} />
+              {/* <Route exact path="/userdetails/:id" component={UserDetails} /> */}
               <Route exact path="/edituser/:id" component={EditUser} />
               <Route exact path="/adduser" component={AddUser} />
               <Route exact path="/information" component={Information} />

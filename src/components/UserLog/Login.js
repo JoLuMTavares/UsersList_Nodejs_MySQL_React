@@ -5,6 +5,8 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 
+import { Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
+
 // Component needed when the user makes a successful login
 import SuccessLogin from './SuccessLogin';
 
@@ -42,7 +44,9 @@ class Login extends Component {
    * localStorage and on the object here from state. Then it's possible to see
    * all the other information.
    */
-  login = async () => {
+  login = async event => {
+    // Preventing page from reload
+    event.preventDefault();
     const result = await axios('http://localhost:1024/login', {
       method: 'post',
       // The username and password to be sent
@@ -110,42 +114,44 @@ class Login extends Component {
       <div>
         {this.state.showSuccess === false ? (
           <div className="App-login">
-            <h1>Users - JWT and MySQL</h1>
-            <div>
-              Username:{' '}
-              <input
-                type="text"
-                name="username"
-                className="form-control"
-                onChange={this.updateInput} // Each written character is store on the specific object in state
-              />
-              {/* If there are errors to be shown... */}
-              {this.state.error1 && (
-                <div className="invalid-feedback d-block">
-                  {this.state.error1}
-                </div>
-              )}
+            <Form onSubmit={this.login}>
+              <h1>Users - JWT and MySQL</h1>
+              <div>
+                Username:{' '}
+                <input
+                  type="text"
+                  name="username"
+                  className="form-control"
+                  onChange={this.updateInput} // Each written character is store on the specific object in state
+                />
+                {/* If there are errors to be shown... */}
+                {this.state.error1 && (
+                  <div className="invalid-feedback d-block">
+                    {this.state.error1}
+                  </div>
+                )}
+                <br />
+                Password:{' '}
+                <input
+                  type="password"
+                  name="password"
+                  className="form-control"
+                  onChange={this.updateInput} // Each written character is store on the specific object in state
+                />
+                {/* If there are errors to be shown... */}
+                {this.state.error2 && (
+                  <div className="invalid-feedback d-block">
+                    {this.state.error2}
+                  </div>
+                )}
+              </div>
               <br />
-              Password:{' '}
-              <input
-                type="password"
-                name="password"
-                className="form-control"
-                onChange={this.updateInput} // Each written character is store on the specific object in state
-              />
-              {/* If there are errors to be shown... */}
-              {this.state.error2 && (
-                <div className="invalid-feedback d-block">
-                  {this.state.error2}
-                </div>
-              )}
-            </div>
-            <br />
-            <br />
-            {/* This is the button that calls the login function. */}
-            <button className="btn btn-primary" onClick={this.login}>
-              Login
-            </button>
+              <br />
+              {/* This is the button that calls the login function. */}
+              <button type="submit" className="btn btn-primary">
+                Login
+              </button>
+            </Form>
           </div>
         ) : (
           <SuccessLogin updateHandler={this.updateUserToken} />

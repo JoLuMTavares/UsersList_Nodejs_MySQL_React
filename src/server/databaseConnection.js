@@ -1,6 +1,6 @@
 /**
  * This is the file containing the database connection. It also contains
- * the needed queries to comunicate with the database. It's then loaded
+ * the needed queries to communicate with the database. It's then loaded
  * by the userDataModule.js, so it can be used.
  *
  * For that, this file needs to be implemented as a module export.

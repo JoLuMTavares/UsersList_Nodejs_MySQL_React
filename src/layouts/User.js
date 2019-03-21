@@ -5,7 +5,7 @@ import React from 'react';
 // Very important. Button is here and never used. But if it's removed
 // from here, the button  (with the link inside) doesn't work
 import { BrowserRouter as Button, Link } from 'react-router-dom';
-/* This is a stateless component and it's imported by the "UserDetails"
+/* This is a stateless component and it's imported by the "Users"
   component. It show the data about a user by a table cell. Inside this
   cell there are a single column for each data.
 */
